@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>KAMAL TEJ REGISTRATION PAGE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="register.css">
+    <title>Registration Page</title>
+    <script>
+        function registration()
+        {
+            if(document.getElementById('fn').value.length>0 && document.getElementById('ln').value.length>0 && document.getElementById('username').value.length>0 && document.getElementById('email').value.length>0 && document.getElementById('password').value.length>0 && document.getElementById('cpassword').value.length>0 &&
+                ( document.getElementById('cpassword').value ==document.getElementById('password').value))
+            {
+                localStorage.setItem('UserName',(document.getElementById('username').value));
+                localStorage.setItem('Password',(document.getElementById('password').value));
+                window.location.href='LoginPage.html';
+            }
+            else
+            {
+                alert('Dear user, you have missed entering few details !');
+            }
+        }
+    </script>
+</head>
+<body style="background-image:url('http://www.planwallpaper.com/static/images/background-gmail-google-images_FG2XwaO.jpg') ; background-size:100% , no-repeat">
+<center>
+    <h1><center><img src="http://sportscommunity.com.au/wp-content/uploads/2015/06/Button-ENTER-Here.jpeg" height="98" alt="REGISTRATION"></center></h1>
+    <form>
+        <div>
+            <div id="leftDiv">
+                <input id="fn" type="text"  name="firstName" placeholder="Please enter your First name" size="30" value=""/>
+            </div><br>
+            <div id="rightDiv">
+                <input id="ln" type="text" name="lastName" placeholder="Please enter your Last name" size="30" value=""/>
+            </div>
+        </div>
+        <div> <input id="username" type="text" name="username" placeholder="Please enter your UserName" size="30" ></div>
+        <div>
+            <input id="email" type="email" name="email" placeholder="Please enter your MailID" size=23>
+        </div>
+        <div>
+            <input id="password" type="password" name="password12" placeholder="Please enter your Password" size=30>
+        </div>
+        <div>
+            <input id="cpassword" type="password" name="password11" placeholder="Please re-enter your Password" size=30>
+        </div>
+        </div>
+
+        <div>
+            <input id="mobile" type="text"  placeholder="Please enter yourMobile phone" size="30">
+        </div>
+        <div>
+            DOB : <input id="bday" type="date" name="Please enter your DOB" style="width:15%">
+        </div>
+        <div>
+            SEX : <select id="gender" name="gender" style="width: 9%">
+            <option selected disabled>Sex</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>None</option>
+        </select>
+        </div>
+        <input type="button" name="Register" value="Register" onclick="registration()"><br><br>
+        <input type="reset" value="Reset Details"><br><br>
+        <input type="button" value="Click" onclick="login()">
+    </form>
+</center>
+</body>
