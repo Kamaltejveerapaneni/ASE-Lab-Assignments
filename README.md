@@ -15,4 +15,4 @@ Lab 4 Wiki Page : https://github.com/Kamaltejveerapaneni/ASE-Lab-Assignments/wik
 Lab 5 Wiki Page: https://github.com/Kamaltejveerapaneni/ASE-Lab-Assignments/wiki/Lab-5-Wiki-Page
 
 
-Lab 6 Wiki Page:
+Lab 6 Wiki Page: https://github.com/Kamaltejveerapaneni/ASE-Lab-Assignments/wiki/Lab-6-Wiki-Page
