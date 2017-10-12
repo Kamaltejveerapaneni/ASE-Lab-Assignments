@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+
+  </head>
+
+  <body ng-app="starter">
+
+    <ion-pane title="Product Search">
+
+      <ion-content ng-controller="ExampleController" padding="true" style="background: url(http://www.planwallpaper.com/static/images/518164-backgrounds.jpg) no-repeat center;background-size:cover;" >
+
+	<center><h1 style='color:#000000;'>SEARCH FOR MOVIE / TV SERIES</h1></center><br>
+
+           <a  id="signup-button7" class="button button-energized"onclick="location.href='index.html'" style="margin-left:1250px">Log out</a><br><br>
+	<label class="item item-input" id="login-input1">
+
+                    <span class="input-label">Enter MovieName</span>
+                    <input type="text" placeholder="" id="search">
+    </label>
+          <br>
+          <br>
+
+
+          <button class="button button-block button-royal" onclick="getData()">Search</button>
+          <div id="id01">
+
+		  </div>
+
+        <button class="button button-block button-assertive" onclick="analysis()">Plot Analysis</button>
+         <div id="id02">
+
+		  </div>
+
+      </ion-content>
+    </ion-pane>
+
+<script>
+var plot;
+function getData() {
+    var txt = document.getElementById("search").value;
+	var xmlhttp = new XMLHttpRequest();
+
+    var url = "http://www.omdbapi.com/?t="+txt;
+    xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        myFunction(myArr);
+    }
+};
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+function myFunction(arr) {
+    var out = "";
+    out="<h2 style='color:#000000;'>Title: "+arr.Title+"</h2>"
+    out+="<h2 style='color:#000000;'>Release details: "+arr.Released+"</h2>"
+	out+="<h2 style='color:#000000;'>Genre: "+arr.Genre+"</h2>"
+	plot=arr.Plot;
+	out+="<h2 style='color:#000000;'>Plot: "+arr.Plot+"</h2>"
+	out+="<h2 style='color:#000000;'>imdbRating: "+arr.imdbRating+"</h2>"
+	out+="<img src="+arr.Poster+"></img>"
+    document.getElementById("id01").innerHTML = out;
+}
+}
+
+
+function analysis() {
+	var xmlhttp = new XMLHttpRequest();
+
+    var url = "https://api.uclassify.com/v1/uClassify/Sentiment/classify/?readKey=ykENoeC2GKvx&text="+plot;
+    xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        myFunction(myArr);
+    }
+};
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+function myFunction(arr) {
+    var out = "";
+    out="<h2 style='color:#000000;'>Positive: "+arr.positive*100+"%</h2>"
+    out+="<h2 style='color:#000000;'>Negative: "+arr.negative*100+"%</h2>"
+	document.getElementById("id02").innerHTML = out;
+}
+}
+
+</script>
+  </body>
+</html>
