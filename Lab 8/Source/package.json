@@ -1,8 +1,13 @@
 {
-    "name": "Lab_Assignment9",
+    "name": "tutorial",
     "version": "1.0.0",
-    "keywords": ["util", "functional", "server", "client", "browser"],
-    "author": "mali_pc",
-    "contributors": [],
-    "dependencies": {}
+    "description": "",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "express": "4.13.3"
+    },
+    "author": "Kamal Veerapaneni",
+    "license": "ISC"
 }
